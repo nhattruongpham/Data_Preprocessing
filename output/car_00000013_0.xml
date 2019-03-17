@@ -1,0 +1,32 @@
+<annotation>
+<folder>YTO15</folder>
+<filename>car_00000013.jpg</filename>
+<source>
+<database>YouTube-Objects 2015 Dataset</database>
+<annotation>YouTube-Objects 2015</annotation>
+<image>flickr</image>
+<flickrid>341012865</flickrid>
+</source>
+<owner>
+<flickrid>Vicky</flickrid>
+<name>VID test set</name>
+</owner>
+<size>
+<width>1280</width>
+<height>720</height>
+<depth>3</depth>
+</size>
+<segmented>0</segmented>
+<object>
+<name>car</name>
+<pose>Left</pose>
+<truncated>0</truncated>
+<difficult>0</difficult>
+<bndbox>
+<xmin>738.0</xmin>
+<ymin>291.0</ymin>
+<xmax>947.0</xmax>
+<ymax>414.0</ymax>
+</bndbox>
+</object>
+</annotation>
