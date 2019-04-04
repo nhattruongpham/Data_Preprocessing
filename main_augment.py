@@ -7,13 +7,16 @@ import cv2
 
 
 rhflip = RandomHorizontalFlip(0.4)
-# rvflip = RandomVerticalFlip(0.6)
+rhflip1 = RandomHorizontalFlip(1)
+rvflip = RandomVerticalFlip(0.6)
+rvflip1 = RandomVerticalFlip(1)
 rscale = RandomScale(0.2, diff = True)  
 rtranslate = RandomTranslate(0.2, diff = True)
 rrotate = RandomRotate((25, 90))
 rshear = RandomShear(0.4)
 rnoise = RandomNoise(typical=(1, 6))
-transforms = [rhflip, rscale, rtranslate, rrotate, rshear, rnoise]
+seq1 = Sequence([rtranslate, rrotate])
+transforms = [rhflip, rhflip1, rvflip, rvflip1, rscale, rtranslate, rrotate, rshear, rnoise, seq1]
 # print(int(len(transforms) -0))
 # print(transforms[0])
 
@@ -41,8 +44,8 @@ def get_images(img_file):
 
 
 if __name__ == '__main__':
-    input_path = '/home/skyo-skynet/Personal/myhubs/augmentation/input'
-    output_path = '/home/skyo-skynet/Personal/myhubs/augmentation/output'
+    input_path = '/home/skyo-skynet/Personal/myhubs/Data_Preprocessing/input_pos'
+    output_path = '/home/skyo-skynet/Personal/myhubs/Data_Preprocessing/output_pos'
     temp = 0
 
     for i, file in enumerate(glob.glob(os.path.join(input_path, "*.jpg"))):
@@ -66,6 +69,7 @@ if __name__ == '__main__':
             copyfile(xml_file, out_xml)
             tree = ET.parse(out_xml)
             root = tree.getroot()
+            root.find('filename').text = out_img.split('/')[-1]
             for j, member in enumerate(root.findall('object')):
                 # print(j)
                 try:
